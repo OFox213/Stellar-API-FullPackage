@@ -2,8 +2,22 @@
 ## 이 API는 FileTreeSize 프로젝트 의존성에 포함될 목적으로 수정된 코드 전체를 포함하고 있습니다.
 원본 프로젝트는 [Stellar-API](https://github.com/roro2239/Stellar-API) 를 참조하십시오.
 
-# Stellar API 통합 가이드
+# How to use
+Stellar-API-FullPackage 는 원본 프로젝트에 포함되어있지 않은 userservice 를 함께 빌드할 수 있도록 수정된 소스코드들을 포함하고 있습니다.
+Release 탭에 있는 빌드 결과물들은 각각 aidl, api, provider, shared, userservice 로 나뉘어져있으며 필요한 경우 개별로 사용하고,
+전체가 필요한 경우 모든 빌드들을 implementation 하십시오.
 
+프로젝트 app 폴더 내에 libs 폴더를 생성 후 stellar 라이브러리를 이동하십시오.
+그리고 아래 코드를 app 단 build.gradle.kts 에 붙여넣으십시오.
+```kotlin
+implementation(files("libs/stellar-aidl.aar"))
+implementation(files("libs/stellar-userservice.aar"))
+implementation(files("libs/stellar-api.aar"))
+implementation(files("libs/stellar-provider.aar"))
+implementation(files("libs/stellar-shared.aar"))
+```
+
+# Stellar API 통합 가이드
 Stellar는 Shizuku의 포크 프로젝트로, ADB 또는 Root 권한으로 특권 작업을 실행할 수 있는 특권 API 프레임워크입니다. 이 문서는 Stellar API를 애플리케이션에 통합하는 방법과 Shizuku에서 Stellar로 마이그레이션하는 방법을 안내합니다.
 
 ---
